@@ -17,7 +17,7 @@ var age = 31;
 
 // Initialize a new variable "someThing", but leave it undefined
 
-var someThing
+var someThing;
 
 // Initialize a new variable "isHuman", and assign it to a boolean value of your
 // choice
