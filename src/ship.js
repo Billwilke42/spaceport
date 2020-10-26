@@ -50,11 +50,18 @@ class Ship {
       notes: null
     }
     
-    if(this.captain) {
+    if(this.captain && this.fuel && Object.keys(this.parts).length === 5) {
       status.readyToFly = true
-    } else {
+      status.notes = 'Good to go!'
+    } else if (!this.captain || !this.fuel || Object.keys(this.parts).length < 5){
       status.readyToFly = false
-      status.notes = 'Cannot fly without a captain'
+      if(!this.captain) {
+        status.notes = 'Cannot fly without a captain'
+      } else if(!this.fuel && this.captain){
+       status.notes = 'Cannot fly without fuel'
+      } else {
+        status.notes = 'Cannot fly without all parts'
+      }
     }
     
     return status

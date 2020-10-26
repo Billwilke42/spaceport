@@ -399,7 +399,7 @@ describe('Ship', function() {
     assert.equal(status.notes, 'Cannot fly without a captain');
   })
 
-  it.skip('cannot fly without fuel', function() {
+  it('cannot fly without fuel', function() {
     var captain = new Being('Will', 'human');
     var fighter = new Ship(
       {
@@ -417,7 +417,7 @@ describe('Ship', function() {
     assert.equal(status.notes, 'Cannot fly without fuel');
   })
 
-  it.skip('cannot fly without all parts', function() {
+  it('cannot fly without all parts', function() {
     var captain = new Being('Will', 'human');
     var fighter = new Ship(
       {
@@ -435,7 +435,7 @@ describe('Ship', function() {
     assert.equal(status.notes, 'Cannot fly without all parts');
   })
 
-  it.skip('can fly', function() {
+  it('can fly', function() {
     var captain = new Being('Will', 'human');
     var parts = {
       shell: new Part({name: 'S-1', type: 'shell', value: 200}),
