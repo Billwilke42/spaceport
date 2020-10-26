@@ -15,12 +15,16 @@ class Ship {
     if(!this.validDesignation.includes(object.type)) {
       return this.type = undefined;
     }}
+
+
     addCrew(crew) {
-  for (var i = 0; i < this.maxCrew; i++) {
-if (this.crew.length === this.maxCrew) {
-      return this.crew ;
- } else {
-    this.crew = this.crew.concat(crew[i])
-}}}}
+      return crew.forEach(member => {
+        if(this.crew.length < this.maxCrew && member instanceof Being) {
+          this.crew.push(member)
+        }
+      })
+      
+  }
+}
 
 module.exports = Ship;

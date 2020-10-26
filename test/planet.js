@@ -1,5 +1,5 @@
 var assert = require('chai').assert;
-var Planet = require('../src/planet');
+// var Planet = require('../src/planet');
 var Ship = require('../src/ship');
 var Being = require('../src/being');
 var Part = require('../src/part');
