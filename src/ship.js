@@ -1,4 +1,6 @@
 var Being = require('../src/being');
+var Part = require('../src/part')
+
 class Ship {
   constructor(object) {
     this.name = object.name;
@@ -8,7 +10,7 @@ class Ship {
     this.odometer = object.odometer || 0
     this.fuelCapacity = object.fuelCapacity || 10;
     this.cargo = [];
-    this.parts = {};
+    this.parts = object.parts || {};
     this.maxCrew = object.maxCrew;
     this.fuel = 0;
     this.validDesignation = ['military', 'passenger', 'cargo'];
@@ -24,6 +26,38 @@ class Ship {
         }
       })
       
+  }
+
+  loadCargo(cargo) {
+    if(cargo instanceof Part) {
+      this.cargo.push(cargo)
+    }
+  }
+
+  updatePart(part) {
+    if(this.parts[part.type]) {
+      var difference = this.parts[part.type].value - part.value
+      this.parts[part.type] = part
+      return difference
+    } else if(part.type !== undefined) {
+      this.parts[part.type] = part
+    }
+  }
+
+  checkReadiness() {
+    var status = {
+      readyToFly: null,
+      notes: null
+    }
+    
+    if(this.captain) {
+      status.readyToFly = true
+    } else {
+      status.readyToFly = false
+      status.notes = 'Cannot fly without a captain'
+    }
+    
+    return status
   }
 }
 
